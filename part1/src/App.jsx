@@ -8,6 +8,7 @@ const App = () => {
         1000
     )
 
+
     return (
         <div>{counter}</div>
     );
