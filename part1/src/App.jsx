@@ -8,16 +8,15 @@ const App = () => {
 
     const handleLeftClick = () => {
         setAll(allClicks.concat('L'))
-        const updatedLeft = left + 1
+        const updatedLeft = left + 1 // Solution to display correct state
         setLeft(updatedLeft)
         setTotal(updatedLeft + right)
     }
 
     const handleRightClick = () => {
         setAll(allClicks.concat('R'))
-        const updatedRight = right + 1
-        setRight(updatedRight)
-        setTotal(left + updatedRight)
+        setRight(right + 1)
+        setTotal(left + right) // Won't display correct total
     }
 
     return (
