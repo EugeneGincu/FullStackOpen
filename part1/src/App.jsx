@@ -9,6 +9,8 @@ const Button = (props) => (
     </button>
 )
 
+const Display = props => <div>{props.value}</div>
+
 //Either way is fine
     const setToValueRetFunc = (newValue) => () => {
         console.log('value now', newValue);
@@ -23,7 +25,7 @@ const Button = (props) => (
 
     return (
         <div>
-            {value}
+            <Display value={value} />
             <button onClick={setToValueRetFunc(1000)}>thousand</button>
             <button onClick={() => setToValueCallFunc(0)}>reset</button>
             <button onClick={setToValueRetFunc(value + 1)}>increment</button>
