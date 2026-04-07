@@ -1,61 +1,44 @@
-const Header = (props) => {
+import { useState } from 'react'
+
+const Button = (props) => {
     return (
-    <div>
-        <h1>{props.course}</h1>
-    </div>
+        <button onClick={props.onClick}>{props.text}</button>
     )
 }
 
-const Content = (props) => {
+const Display = (props) => {
     return (
-        <div>
-            <Part part={props.parts[0]} />
-            <Part part={props.parts[1]} />
-            <Part part={props.parts[2]} />
-        </div>
-    )
-}
-
-const Part = (props) => {
-    return (
-        <p>
-            {props.part.name} {props.part.exercises}
-        </p>
-    )
-}
-
-const Total = (props) => {
-    return (
-        <div>
-            <p>Number of exercises {props.parts[0].exercises + props.parts[1].exercises + props.parts[2].exercises}</p>
-        </div>
+        <p>{props.text}{props.value}</p>
     )
 }
 
 const App = () => {
-    const course = {
-        name: 'Half Stack application development',
-        parts : [
-            {
-                name: 'Fundamentals of React',
-                exercises: 10
-            },
-            {
-                name: 'Using props to pass data',
-                exercises: 7
-            },
-            {
-                name: 'State of a component',
-                exercises: 14
-            }
-        ]
+    const [good, setGood] = useState(0);
+    const [neutral, setNeutral] = useState(0);
+    const [bad, setBad] = useState(0);
+
+
+    const addGood = () => () => {
+        setGood(good + 1);
     }
 
+    const addNeutral = () => () => {
+        setNeutral(neutral + 1);
+    }
+
+    const addBad = () => () => {
+        setBad(bad + 1);
+    }
     return (
         <div>
-            <Header course={course.name} />
-            <Content parts={course.parts} />
-            <Total parts={course.parts} />
+            <h1>give feedback</h1>
+            <Button text="good" onClick={addGood()}/>
+            <Button text="neutral" onClick={addNeutral()}/>
+            <Button text="bad" onClick={addBad()}/>
+            <h1>statistics</h1>
+            <Display text="good " value={good} />
+            <Display text="neutral " value={neutral} />
+            <Display text="bad " value={bad} />
         </div>
     )
 }
