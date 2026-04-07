@@ -14,15 +14,21 @@ const Display = (props) => {
 
 const Statistics = (props) => {
     let [good,bad,all] = props.values;
-    // console.log(props.values[0]);
+    if (all === 0) return <div>No feedback given</div>
     return (
         <div>
-            <Display text="all " value={all}/>
-            <Display text="average " value={(good-bad)/all}/>
-            <Display text="positive " value={(good/all) * 100}/>
+            <StatisticLine text="all " value={all}/>
+            <StatisticLine text="average " value={(good-bad)/all}/>
+            <StatisticLine text="positive " value={(good/all) * 100}/>
         </div>
     )
 }
+
+
+const StatisticLine = (props) => {
+    return <Display text={props.text} value={props.value}/>
+}
+
 
 const App = () => {
     const [good, setGood] = useState(0);
