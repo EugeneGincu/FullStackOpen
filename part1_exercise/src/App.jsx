@@ -12,6 +12,18 @@ const Display = (props) => {
     )
 }
 
+const Statistics = (props) => {
+    let [good,bad,all] = props.values;
+    // console.log(props.values[0]);
+    return (
+        <div>
+            <Display text="all " value={all}/>
+            <Display text="average " value={(good-bad)/all}/>
+            <Display text="positive " value={(good/all) * 100}/>
+        </div>
+    )
+}
+
 const App = () => {
     const [good, setGood] = useState(0);
     const [neutral, setNeutral] = useState(0);
@@ -47,9 +59,7 @@ const App = () => {
             <Display text="good " value={good} />
             <Display text="neutral " value={neutral} />
             <Display text="bad " value={bad} />
-            <Display text="all " value={all}/>
-            <Display text="average " value={(good-bad)/all}/>
-            <Display text="positive " value={(good/all) * 100}/>
+            <Statistics values={[good, bad, all]}/>
         </div>
     )
 }
