@@ -1,10 +1,5 @@
 import { useState } from 'react'
-
-const Note = ({note}) => {
-    return (
-        <li>{note.content}</li>
-    )
-}
+import Note from './components/Note'
 
 const App = ({notes}) => {
     // Instead of const {notes} = props
